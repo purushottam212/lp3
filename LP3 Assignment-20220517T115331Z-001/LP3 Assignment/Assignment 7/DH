@@ -1,0 +1,23 @@
+#Diffie Hellman Key Exchange Alogorithm
+# Begin
+sharedPrime = int(input(&quot;Enter shared Prime(n):&quot;))
+sharedBase = int(input(&quot;Enter shared Base(g):&quot;))
+aliceSecret = int(input(&quot;Enter Alice Secret Key(x):&quot;))
+bobSecret = int(input(&quot;Enter Bob Secret Key(y):&quot;))
+print( &quot;Publicly Shared Variables:&quot;)
+print( &quot; Publicly Shared Prime: &quot; , sharedPrime )
+print( &quot; Publicly Shared Base: &quot; , sharedBase )
+# Alice Sends Bob A = g^x mod n
+A = (sharedBase**aliceSecret) % sharedPrime
+print( &quot;\n Alice Sends(A) Over Public Chanel: &quot; , A )
+# Bob Sends Alice B = g^y mod n
+B = (sharedBase ** bobSecret) % sharedPrime
+print(&quot;Bob Sends(B) Over Public Chanel: &quot;, B )
+print( &quot;\n------------\n&quot; )
+print( &quot;Privately Calculated Shared Secret:&quot; )
+# Alice Computes Shared Secret: K1 = B^x mod n
+aliceSharedSecret = (B ** aliceSecret) % sharedPrime
+print( &quot; Alice Shared Secret: &quot;, aliceSharedSecret )
+# Bob Computes Shared Secret: K2 = A^y mod n
+bobSharedSecret = (A**bobSecret) % sharedPrime
+print( &quot; Bob Shared Secret: &quot;, bobSharedSecret )
