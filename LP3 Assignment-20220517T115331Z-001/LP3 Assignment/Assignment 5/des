@@ -1,0 +1,26 @@
+import pyDes
+from time import time
+# For Python3, you&#39;ll need to use bytes, i.e.:
+#key -&gt; Bytes containing the encryption key. 8 bytes for DES, 16 or 24 bytes
+# for Triple DES
+#mode -&gt; Optional argument for encryption type, can be either pyDes.ECB
+# (Electronic Code Book), pyDes.CBC (Cypher Block Chaining)
+#IV -&gt; Optional Initial Value bytes, must be supplied if using CBC mode.
+# Must be 8 bytes in length.
+#pad -&gt; Optional argument, set the pad character (PAD_NORMAL) to use
+# during all encrypt/decrypt operations done with this instance.
+#padmode -&gt; Optional argument, set the padding mode (PAD_NORMAL or
+# PAD_PKCS5) to use during all encrypt/decrypt operations done
+# with this instance.
+data = input(&quot;Please enter plain text for encryption:&quot;)
+keystring=input(&quot;Enter 16/24 byte string for key generation:&quot;)
+k = pyDes.triple_des(keystring, padmode=pyDes.PAD_PKCS5)
+e = k.encrypt(data)
+print (&quot;cipher text: %r&quot; % e)
+#%r to be useful for printing a string of unknown encoding
+print (&quot;plain text: %r&quot; % k.decrypt(e))
+t1 = time()
+for i in range(1000):
+e = k.encrypt(data)
+t2 = time()
+print(&quot;Elapsed time for 1,000 encryptions: {:0.3f}s&quot;.format(t2 - t1))
