@@ -1,0 +1,22 @@
+from Crypto.Cipher import AES
+#key has to be either 16, 24 or 32 bytes
+def paddedKey(key):
+while len(key) % 8 !=0:
+key +=&#39; &#39;
+return key
+#text has to in multiples of 26 bytes
+def paddedText(text):
+while len(text) % 16 != 0:
+text += &#39; &#39;
+return text
+plain_input = input(&quot;Enter the text to be encrypted: &quot;)
+plain = paddedText(plain_input)
+key_input = input(&quot;Enter in a key between 16 and 32 characters: &quot;)
+key = paddedKey(key_input)
+if(len(key_input)&lt; 16 &amp; len(key_input)&gt; 32):
+print(&quot;key must be between 16 and 32 characters!&quot;)
+cipher = AES.new(key)
+ciphertext = cipher.encrypt(plain)
+print(ciphertext)
+cleartext = cipher.decrypt(ciphertext)
+print(cleartext)
