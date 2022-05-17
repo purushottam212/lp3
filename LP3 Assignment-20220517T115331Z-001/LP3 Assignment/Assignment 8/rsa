@@ -1,0 +1,103 @@
+BE
+C
+LP III
+Hani Patil
+•
+22 Mar
+
+aes.py_.docx
+Word
+
+des.py_.docx
+Word
+
+dh.py_.docx
+Word
+
+hours.csv
+Excel
+
+iris.csv
+Excel
+
+kdata.csv
+Excel
+
+KM.doc
+Word
+
+KNN.doc
+Word
+
+LR.doc
+Word
+
+rsa.py_.docx
+Word
+
+Assig 2.txt
+Text
+Class comments
+
+Page2/2
+def gcd(a, b): # calculates GCD of a and d
+while b != 0:
+c = a % b
+a = b
+b = c
+return a
+
+def modinv(a, m): # calculates modulo inverse of a for mod m
+for x in range(1, m):
+if (a * x) % m == 1:
+return x
+return None
+
+def coprimes(a): # calculates all possible co-prime numbers with a
+l = []
+for x in range(2, a):
+if gcd(a, x) == 1 and modinv(x, phi) != None:
+l.append(x)
+for x in l:
+if x == modinv(x, phi):
+l.remove(x)
+return l
+def encrypt_block(m): # encrypts a single block
+c = m ** e % n
+return c
+
+def decrypt_block(c): # decrypts a single block
+m = c ** d % n
+return m
+
+def encrypt_string(s): # applies encryption
+return &#39;&#39;.join([chr(encrypt_block(ord(x))) for x in list(s)])
+
+def decrypt_string(s): # applies decryption
+return &#39;&#39;.join([chr(decrypt_block(ord(x))) for x in list(s)])
+if __name__ == &quot;__main__&quot;:
+p = int(input(&#39;Enter prime p: &#39;))
+
+q = int(input(&#39;Enter prime q: &#39;))
+print(&quot;Choosen primes:\np=&quot; + str(p) + &quot;, q=&quot; + str(q) + &quot;\n&quot;)
+n = p * q
+print(&quot;n = p * q = &quot; + str(n) + &quot;\n&quot;)
+phi = (p - 1) * (q - 1)
+print(&quot;Euler&#39;s function (totient) [phi(n)]: &quot; + str(phi) + &quot;\n&quot;)
+print(&quot;Choose an e from a below coprimes array:\n&quot;)
+print(str(coprimes(phi)) + &quot;\n&quot;)
+e = int(input())
+d = modinv(e, phi) # calculates the decryption key d
+print(&quot;\nYour public key is a pair of numbers (e=&quot; + str(e) + &quot;, n=&quot; + str(n) + &quot;).\n&quot;)
+print(&quot;Your private key is a pair of numbers (d=&quot; + str(d) + &quot;, n=&quot; + str(n) + &quot;).\n&quot;)
+s = input(&quot;Enter a message to encrypt: &quot;)
+print(&quot;\nPlain message: &quot; + s + &quot;\n&quot;)
+enc = encrypt_string(s)
+print(&quot;Encrypted message: &quot;, enc, &quot;\n&quot;)
+dec = decrypt_string(enc)
+print(&quot;Decrypted message: &quot; + dec + &quot;\n&quot;)
+Page 1 of 2def gcd(a, b): # calculates GCD of a and dwhile b != 0:c = a % ba = bb = creturn adef modinv(a, m): # calculates modulo inverse of a for mod mfor x in range(1, m):if (a * x) % m == 1:return xreturn Nonedef coprimes(a): # calculates all possible co-prime numbers with al = []for x in range(2, a):if gcd(a, x) == 1 and modinv(x, phi) != None:l.append(x)for x in l:if x == modinv(x, phi):l.remove(x)return ldef encrypt_block(m): # encrypts a single blockc = m ** e % nreturn cdef decrypt_block(c): # decrypts a single blockm = c ** d % nreturn mdef encrypt_string(s): # applies encryptionreturn &#39;&#39;.join([chr(encrypt_block(ord(x))) for x in list(s)])def decrypt_string(s): # applies decryptionreturn &#39;&#39;.join([chr(decrypt_block(ord(x))) for x in list(s)])if __name__ == &quot;__main__&quot;:p = int(input(&#39;Enter prime p: &#39;))
+Page 2 of 2q = int(input(&#39;Enter prime q: &#39;))print(&quot;Choosen primes:\np=&quot; + str(p) + &quot;, q=&quot; + str(q) + &quot;\n&quot;)n = p * qprint(&quot;n = p * q = &quot; + str(n) + &quot;\n&quot;)phi = (p - 1) * (q - 1)print(&quot;Euler&#39;s function (totient) [phi(n)]: &quot; + str(phi) + &quot;\n&quot;)print(&quot;Choose an e from a below coprimes array:\n&quot;)print(str(coprimes(phi)) + &quot;\n&quot;)e = int(input())d = modinv(e, phi) # calculates the decryption key dprint(&quot;\nYour public key is a pair of numbers (e=&quot; + str(e) + &quot;, n=&quot; + str(n) + &quot;).\n&quot;)print(&quot;Your private key is a pair of numbers (d=&quot; + str(d) + &quot;, n=&quot; + str(n) + &quot;).\n&quot;)s = input(&quot;Enter a message to encrypt: &quot;)print(&quot;\nPlain message: &quot; + s + &quot;\n&quot;)enc = encrypt_string(s)print(&quot;Encrypted message: &quot;, enc, &quot;\n&quot;)dec = decrypt_string(enc)print(&quot;Decrypted message: &quot; + dec + &quot;\n&quot;)
+Find in document
+rsa.py_.docx
+Page 2 of 2
